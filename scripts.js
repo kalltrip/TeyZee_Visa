@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //     document.querySelectorAll(".dropdown-toggle").forEach(toggle => {
 //         toggle.addEventListener("click", function() {
 //             let content = this.nextElementSibling;
-            
+
 //             // Toggle active class
 //             this.classList.toggle("active");
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //     });
 // });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Define the cascading dropdown options
     const categoriesData = {
         "Business": ["Meeting", "Conference", "Trade Show", "Investment"],
@@ -75,17 +75,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const checklistSections = document.querySelectorAll(".checklist-section");
 
     // Primary category change handler
-    primaryDropdown.addEventListener("change", function() {
+    primaryDropdown.addEventListener("change", function () {
         const selectedCategory = this.value;
-        
+
         // Clear sub-category dropdown
         subCategoryDropdown.innerHTML = '<option value="">-- Select Sub-Category --</option>';
-        
+
         // Hide all selectors first
         checklistSelectors.forEach(selector => {
             selector.style.display = "none";
         });
-        
+
         if (selectedCategory) {
             // Populate sub-categories
             if (categoriesData[selectedCategory]) {
@@ -95,10 +95,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     option.textContent = subCat;
                     subCategoryDropdown.appendChild(option);
                 });
-                
+
                 // Show sub-category dropdown
                 subCategoryContainer.style.display = "block";
-                
+
                 // Show only selectors for the selected primary category
                 // checklistSelectors.forEach(selector => {
                 //     if (selector.getAttribute("data-category") === selectedCategory) {
@@ -112,12 +112,12 @@ document.addEventListener("DOMContentLoaded", function() {
             // Hide sub-category dropdown if no primary category is selected
             subCategoryContainer.style.display = "none";
         }
-        
+
         // Hide all sections
         checklistSections.forEach(section => {
             section.style.display = "none";
         });
-        
+
         // Reset active selector styling
         checklistSelectors.forEach(s => {
             s.classList.remove("active-selector");
@@ -125,32 +125,32 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Sub-category change handler
-    subCategoryDropdown.addEventListener("change", function() {
+    subCategoryDropdown.addEventListener("change", function () {
         const selectedCategory = primaryDropdown.value;
         const selectedSubCategory = this.value;
-        
+
         // Hide all sections
         checklistSections.forEach(section => {
             section.style.display = "none";
         });
-        
+
         // Reset active selector styling
         checklistSelectors.forEach(s => {
             s.classList.remove("active-selector");
         });
-        
+
         if (selectedCategory && selectedSubCategory) {
             // Find matching selector and activate it
             checklistSelectors.forEach((selector, index) => {
                 const selectorCategory = selector.getAttribute("data-category");
                 const selectorSubcategory = selector.getAttribute("data-subcategory");
-                
+
                 if (selectorCategory === selectedCategory && selectorSubcategory === selectedSubCategory) {
                     // Show matching section
                     if (checklistSections[index]) {
                         checklistSections[index].style.display = "flex";
                     }
-                    
+
                     // Update active selector styling
                     selector.classList.add("active-selector");
                 }
@@ -160,34 +160,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Selector click handler
     checklistSelectors.forEach((selector, index) => {
-        selector.addEventListener("click", function() {
+        selector.addEventListener("click", function () {
             // Hide all sections
             checklistSections.forEach(section => {
                 section.style.display = "none";
             });
-            
+
             // Show selected section
             if (checklistSections[index]) {
                 checklistSections[index].style.display = "flex";
             }
-            
+
             // Update active selector styling
             checklistSelectors.forEach(s => {
                 s.classList.remove("active-selector");
             });
             this.classList.add("active-selector");
-            
+
             // Update dropdowns to match selected section
             const category = this.getAttribute("data-category");
             const subcategory = this.getAttribute("data-subcategory");
-            
+
             if (category) {
                 primaryDropdown.value = category;
-                
+
                 // Trigger change event to update sub-categories
                 const event = new Event("change");
                 primaryDropdown.dispatchEvent(event);
-                
+
                 // Set sub-category if available
                 if (subcategory) {
                     setTimeout(() => {
@@ -203,14 +203,52 @@ document.addEventListener("DOMContentLoaded", function() {
     const initEvent = new Event("change");
     primaryDropdown.dispatchEvent(initEvent);
 });
-document.querySelectorAll('.time-slot').forEach(slot => {
-    slot.addEventListener('click', function() {
-        // Remove selected class from all time slots
-        document.querySelectorAll('.time-slot').forEach(s => {
-            s.classList.remove('selected');
+const dateEl = document.getElementById('next-appointment-date');
+const today = new Date();
+
+// Add one month while handling year-end overflow
+const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+
+// Format the date (e.g., May 8, 2025)
+const options = { year: 'numeric', month: 'long', day: 'numeric' };
+dateEl.textContent = nextMonth.toLocaleDateString('en-US', options);
+
+// read more
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all hidden content to be hidden
+    document.querySelectorAll('.hidden-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    
+    // Add click handlers to all read-more elements
+    document.querySelectorAll('.read-more').forEach(readMoreLink => {
+        readMoreLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Find the parent card content and the hidden content inside it
+            const cardContent = this.closest('.card-content');
+            const hiddenContent = cardContent.querySelector('.hidden-content');
+            
+            // Toggle visibility
+            if (hiddenContent.style.display === 'inline') {
+                hiddenContent.style.display = 'none';
+                this.innerHTML = 'Read more <i class="fas fa-arrow-right"></i>';
+            } else {
+                hiddenContent.style.display = 'inline';
+                this.innerHTML = 'Read less <i class="fas fa-arrow-up"></i>';
+            }
         });
-        
-        // Add selected class to clicked time slot
-        this.classList.add('selected');
+    });
+
+    // Make the entire link (both text and icon) clickable
+    document.querySelectorAll('.read-more i').forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            // Prevent the default action
+            e.preventDefault();
+            // Prevent event bubbling
+            e.stopPropagation();
+            // Trigger the click on the parent element
+            this.parentElement.click();
+        });
     });
 });
