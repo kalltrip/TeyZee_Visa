@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Modern CSS Reset */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
         }
 
         /* Base Styles */
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -35,9 +39,11 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        h1{
+
+        h1 {
             text-align: center;
         }
+
         /* Header Styles */
         header {
             background: linear-gradient(135deg, #9089f7 0%, #7367f0 100%);
@@ -105,9 +111,9 @@
         }
 
         .iframe-container {
-           
+
             height: 100vh;
-          
+
         }
 
         iframe {
@@ -279,42 +285,43 @@
                 height: 60vh;
             }
         }
+
         h1 {
-    font-size: 22px;
-    font-weight: 500;
-    color: #5d5ff0;
-    text-align: center;
-    margin-top: 30px;
-    line-height: 1.6;
-}
+            font-size: 22px;
+            font-weight: 500;
+            color: #5d5ff0;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.6;
+        }
 
-h1 .whatsapp-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: transparent;
-    color: #25D366;
-    padding: 0;
-    margin: 0;
-    font-size: inherit;
-    font-weight: inherit;
-    text-decoration: underline;
-    border: none;
-    transition: color 0.3s ease;
-}
+        h1 .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: transparent;
+            color: #25D366;
+            padding: 0;
+            margin: 0;
+            font-size: inherit;
+            font-weight: inherit;
+            text-decoration: underline;
+            border: none;
+            transition: color 0.3s ease;
+        }
 
-h1 .whatsapp-button i {
-    font-size: 1em;
-    margin-right: 5px;
-}
+        h1 .whatsapp-button i {
+            font-size: 1em;
+            margin-right: 5px;
+        }
 
-h1 .whatsapp-button:hover {
-    color: #128C7E;
-    text-decoration: none;
-}
-
+        h1 .whatsapp-button:hover {
+            color: #128C7E;
+            text-decoration: none;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container header-container">
@@ -335,83 +342,110 @@ h1 .whatsapp-button:hover {
     </header>
 
     <h1>
-         <a href="https://wa.me/919029027420" class="whatsapp-button">
-        <i class="fab fa-whatsapp"></i> Chat with us
-    </a> on whatsapp for help with filling the form.</h1>
+        <a href="https://wa.me/919029027420" class="whatsapp-button">
+            Chat with us on whatsapp
+        </a> <br>for help with filling the form.
+           <!-- start of concent banner -->
+           <div class="cookie-banner" style="display: block;">
+            <p>We use cookies to ensure you get the best experience on our website. <a href=“/cookie-policy”>Learn More</a></p>
+            <button class=“cookie-button”>Accept</button>
+          </div>
+ 
+          <div id="gdpr-thing">
+            <!-- By using this website, you consent to privacy policies mentionned on  -->
+            <a href=“#”>this page</a> [ <a id=“consent-button” href=“#”>Ok</a> ]
+          </div>
+    </h1>
     <main>
+     
         <div class="container">
             <div class="iframe-container">
-                <iframe 
-                    src="https://creatorapp.zohopublic.com/indiacarz/teyzee-visas/form-embed/Add_Applicant/BMBMPpKCEvOzyVpRKQV0C3GHbsFhuBjxjWr7wD9Sw7GsV6sn8uFun3ffe6Wmj5TnTgWqAPyAmHaxHHm6j8QyNta9CC4FxfFhywjZ" 
-                    allowtransparency="true" 
-                    scrolling="auto"
-                    title="Visa Application Form">
+                <iframe
+                    src="https://creatorapp.zohopublic.com/indiacarz/teyzee-visas/form-embed/Add_Applicant/BMBMPpKCEvOzyVpRKQV0C3GHbsFhuBjxjWr7wD9Sw7GsV6sn8uFun3ffe6Wmj5TnTgWqAPyAmHaxHHm6j8QyNta9CC4FxfFhywjZ"
+                    allowtransparency="true" scrolling="auto" title="Visa Application Form">
                 </iframe>
             </div>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Our Locations</h3>
-                    <div class="address">
-                        <p><i class="fas fa-map-marker-alt"></i> A-302, RG City Centre, DB Gupta Road, Delhi 110011</p>
-                    </div>
-                    <div class="address">
-                        <p><i class="fas fa-map-marker-alt"></i> Mumbai - WeWork Platinum, Marol, Mumbai, Maharashtra, 400059</p>
-                    </div>
-                    <a href="https://wa.me/919029027420" class="whatsapp-button">
-                        <i class="fab fa-whatsapp"></i> Chat with us
-                    </a>
+</body>
+<script type=“text/javascript”>
+    // On page load
+      window.addEventListener('load', (event) => {
+          // Check if already accepted before, hide banner
+          if (localStorage.getItem('gdpr-accept')==='ok'){
+              document.getElementById(“gdpr-thing”).style.display=‘none’;
+          }
+        // If accept, hide banner and remeber choice
+        document.getElementById("consent-button").onclick = function() {
+          document.getElementById(“gdpr-thing”).style.display=‘none’;
+          localStorage.setItem(‘gdpr-accept’, ‘ok’);
+        };
+      });
+  </script>
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Our Locations</h3>
+                <div class="address">
+                    <p><i class="fas fa-map-marker-alt"></i> A-302, RG City Centre, DB Gupta Road, Delhi 110011</p>
                 </div>
-
-                <div class="footer-col">
-                    <h3>About TeyZee</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-angle-right"></i> About Us</a></li>
-                        <li><a href="#"><i class="fas fa-angle-right"></i> Contact Us</a></li>
-                        <li><a href="#"><i class="fas fa-angle-right"></i> Our Blogs</a></li>
-                        <li><a href="#"><i class="fas fa-angle-right"></i> Privacy Policy</a></li>
-                    </ul>
+                <div class="address">
+                    <p><i class="fas fa-map-marker-alt"></i> Mumbai - WeWork Platinum, Marol, Mumbai, Maharashtra,
+                        400059</p>
                 </div>
-
-                <div class="footer-col">
-                    <h3>Our Policies</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-angle-right"></i> Refund Policy</a></li>
-                        <li><a href="#"><i class="fas fa-angle-right"></i> Cancellation Policy</a></li>
-                        <li><a href="#"><i class="fas fa-angle-right"></i> Pricing</a></li>
-                        <li><a href="#"><i class="fas fa-angle-right"></i> Terms & Conditions</a></li>
-                    </ul>
-                </div>
+                <a href="https://wa.me/919029027420" class="whatsapp-button">
+                    <i class="fab fa-whatsapp"></i> Chat with us
+                </a>
             </div>
 
-            <div class="footer-countries">
-                <h3>Popular Visa Destinations</h3>
-                <div class="country-links">
-                    <a href="#">France</a> •
-                    <a href="#">Italy</a> •
-                    <a href="#">Germany</a> •
-                    <a href="#">Switzerland</a> •
-                    <a href="#">Greece</a> •
-                    <a href="#">Spain</a> •
-                    <a href="#">Portugal</a> •
-                    <a href="#">Netherlands</a> •
-                    <a href="#">Belgium</a> •
-                    <a href="#">Austria</a> •
-                    <a href="#">Sweden</a> •
-                    <a href="#">Denmark</a> •
-                    <a href="#">Finland</a> •
-                    <a href="#">Norway</a>
-                </div>
+            <div class="footer-col">
+                <h3>About TeyZee</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> About Us</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Contact Us</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Our Blogs</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Privacy Policy</a></li>
+                </ul>
             </div>
 
-            <div class="copyright">
-                <p>© 2025 TeyZee Visas. All Rights Reserved.</p>
+            <div class="footer-col">
+                <h3>Our Policies</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Refund Policy</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Cancellation Policy</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Pricing</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> Terms & Conditions</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
-</body>
+
+        <div class="footer-countries">
+            <h3>Popular Visa Destinations</h3>
+            <div class="country-links">
+                <a href="#">France</a> •
+                <a href="#">Italy</a> •
+                <a href="#">Germany</a> •
+                <a href="#">Switzerland</a> •
+                <a href="#">Greece</a> •
+                <a href="#">Spain</a> •
+                <a href="#">Portugal</a> •
+                <a href="#">Netherlands</a> •
+                <a href="#">Belgium</a> •
+                <a href="#">Austria</a> •
+                <a href="#">Sweden</a> •
+                <a href="#">Denmark</a> •
+                <a href="#">Finland</a> •
+                <a href="#">Norway</a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 TeyZee Visas. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
 </html>
