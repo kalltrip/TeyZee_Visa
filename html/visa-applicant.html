@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeyZee Visas - Visa Application Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern CSS Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* Base Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1{
+            text-align: center;
+        }
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #9089f7 0%, #7367f0 100%);
+            /* padding: 15px 0; */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #5648ce;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(86, 72, 206, 0.3);
+        }
+
+        .contact:hover {
+            background-color: #473dab;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(86, 72, 206, 0.4);
+        }
+
+        .contact i {
+            font-size: 1.1rem;
+        }
+
+        /* Main Content Styles */
+        main {
+            flex: 1;
+            padding: 30px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .iframe-container {
+           
+            height: 100vh;
+          
+        }
+
+        iframe {
+            width: 70%;
+            justify-content: center;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #9089f7 0%, #7367f0 100%);
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: auto;
+            justify-content: space-around;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 40px;
+            background-color: #ffffff;
+        }
+
+        .footer-col ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .address p {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .address i {
+            margin-top: 5px;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .footer-countries {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .footer-countries h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .country-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .country-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .country-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-actions {
+                gap: 10px;
+            }
+
+            .contact {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+
+            .iframe-container {
+                height: 70vh;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .iframe-container {
+                height: 60vh;
+            }
+        }
+        h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #5d5ff0;
+    text-align: center;
+    margin-top: 30px;
+    line-height: 1.6;
+}
+
+h1 .whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    color: #25D366;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+h1 .whatsapp-button i {
+    font-size: 1em;
+    margin-right: 5px;
+}
+
+h1 .whatsapp-button:hover {
+    color: #128C7E;
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">
+                    <img src="/VisaImages/destinations/Teyzee_logo_240w_500h.jpeg" alt="TeyZee Visas Logo">
+                </a>
+            </div>
+            <div class="header-actions">
+                <a href="https://wa.me/919029027420" class="contact">
+                    <i class="fab fa-whatsapp"></i> Chat with us
+                </a>
+                <a href="tel:919029027420" class="contact">
+                    <i class="fas fa-phone"></i> Call Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <h1>
+         <a href="https://wa.me/919029027420" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i> Chat with us
+    </a> on whatsapp for help with filling the form.</h1>
+    <main>
+        <div class="container">
+            <div class="iframe-container">
+                <iframe 
+                    src="https://creatorapp.zohopublic.com/indiacarz/teyzee-visas/form-embed/Add_Applicant/BMBMPpKCEvOzyVpRKQV0C3GHbsFhuBjxjWr7wD9Sw7GsV6sn8uFun3ffe6Wmj5TnTgWqAPyAmHaxHHm6j8QyNta9CC4FxfFhywjZ" 
+                    allowtransparency="true" 
+                    scrolling="auto"
+                    title="Visa Application Form">
+                </iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Our Locations</h3>
+                    <div class="address">
+                        <p><i class="fas fa-map-marker-alt"></i> A-302, RG City Centre, DB Gupta Road, Delhi 110011</p>
+                    </div>
+                    <div class="address">
+                        <p><i class="fas fa-map-marker-alt"></i> Mumbai - WeWork Platinum, Marol, Mumbai, Maharashtra, 400059</p>
+                    </div>
+                    <a href="https://wa.me/919029027420" class="whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> Chat with us
+                    </a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>About TeyZee</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Our Blogs</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Policies</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Refund Policy</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Cancellation Policy</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Pricing</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-countries">
+                <h3>Popular Visa Destinations</h3>
+                <div class="country-links">
+                    <a href="#">France</a> •
+                    <a href="#">Italy</a> •
+                    <a href="#">Germany</a> •
+                    <a href="#">Switzerland</a> •
+                    <a href="#">Greece</a> •
+                    <a href="#">Spain</a> •
+                    <a href="#">Portugal</a> •
+                    <a href="#">Netherlands</a> •
+                    <a href="#">Belgium</a> •
+                    <a href="#">Austria</a> •
+                    <a href="#">Sweden</a> •
+                    <a href="#">Denmark</a> •
+                    <a href="#">Finland</a> •
+                    <a href="#">Norway</a>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>© 2025 TeyZee Visas. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
