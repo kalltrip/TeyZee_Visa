@@ -321,7 +321,22 @@
         }
 
         /* Cookie consent styling */
+        /* Cookie consent styling - move to top */
         .cookie-banner {
+            position: fixed;
+            top: 0;
+            /* Changed from bottom to top */
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #9089f7 0%, #7367f0 100%);
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* .cookie-banner {
             position: fixed;
             bottom: 0;
             left: 0;
@@ -332,7 +347,7 @@
             text-align: center;
             z-index: 1001;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-        }
+        } */
 
         .cookie-button {
             background-color: #5648ce;
@@ -419,21 +434,21 @@
         </div>
     </header>
 
+    <!-- Cookie consent banners - moved outside the h1 tag -->
+    <div class="cookie-banner" style="display: block;">
+        <p>We use cookies to ensure you get the best experience on our website. <a href="/cookie-policy">Learn More</a>
+        </p>
+        <button class="cookie-button">Accept</button>
+    </div>
+
+    <div id="gdpr-thing">
+        <a href="#">this page</a> [ <a id="consent-button" href="#">Ok</a> ]
+    </div>
+
     <h1>
         <a href="https://wa.me/919029027420" class="whatsapp-button">
             Chat with us on whatsapp
         </a> <br>for help with filling the form.
-        <!-- start of concent banner -->
-        <div class="cookie-banner" style="display: block;">
-            <p>We use cookies to ensure you get the best experience on our website. <a href="/cookie-policy">Learn More</a></p>
-            <button class="cookie-button">Accept</button>
-          </div>
-
-        <div id="gdpr-thing">
-            <!-- By using this website, you consent to privacy policies mentionned on  -->
-            <a href=“#”>this page</a> [ <a id=“consent-button” href=“#”>Ok</a> ]
-        </div>
-      
     </h1>
     <main>
         <div class="container">
@@ -525,47 +540,108 @@
     </div>
 </footer>
 <script>
-    // On page load
-window.addEventListener('load', (event) => {
-    // Handle cookie consent
+   window.addEventListener('load', (event) => {
+    // Elements
     const cookieConsentBanner = document.querySelector('.cookie-banner');
     const cookieButton = document.querySelector('.cookie-button');
+    const iframeContainer = document.querySelector('.iframe-container');
+    const formIframe = document.querySelector('.iframe-container iframe');
+    const mainContent = document.querySelector('main');
+    
+    // Function to show consent message
+    function showConsentMessage() {
+        // Create message if it doesn't exist
+        if (!document.getElementById('consent-required-message')) {
+            const messageDiv = document.createElement('div');
+            messageDiv.id = 'consent-required-message';
+            messageDiv.innerHTML = `
+                <div style="text-align: center; padding: 30px; background-color: #f8f9fa; border-radius: 8px; 
+                            max-width: 600px; margin: 50px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <i class="fas fa-cookie-bite" style="font-size: 48px; color: #7367f0; margin-bottom: 20px;"></i>
+                    <h2 style="color: #5d5ff0; margin-bottom: 15px;">Cookie Consent Required</h2>
+                    <p style="font-size: 16px; margin-bottom: 20px;">
+                        To access and fill out our visa application form, please accept cookies by clicking 
+                        the "Accept" button in the consent banner at the top of the page.
+                    </p>
+                </div>
+            `;
+            
+            // Add message to main content
+            if (mainContent) {
+                mainContent.appendChild(messageDiv);
+            }
+        }
+    }
     
     // Check if cookie consent was already accepted
-    if (localStorage.getItem('cookie-accept') === 'ok') {
-        if (cookieConsentBanner) {
-            cookieConsentBanner.style.display = 'none';
-        }
+    const cookiesAccepted = localStorage.getItem('cookie-accept') === 'ok';
+    
+    // Initial state setup
+    if (!cookiesAccepted) {
+        // Show consent message
+        showConsentMessage();
     }
     
     // Handle cookie consent button click
     if (cookieButton) {
         cookieButton.addEventListener('click', function() {
+            // Hide cookie banner
             cookieConsentBanner.style.display = 'none';
+            
+            // Save consent in localStorage
             localStorage.setItem('cookie-accept', 'ok');
+            
+            // Show form
+            if (formIframe) {
+                formIframe.style.display = 'block';
+            }
+            
+            // Remove consent message
+            const consentMessage = document.getElementById('consent-required-message');
+            if (consentMessage) {
+                consentMessage.remove();
+            }
         });
+    } else {
+        // If no cookie button (shouldn't be the case based on previous code), handle the scenario accordingly
+        console.error('Cookie button not found.');
     }
     
-    // Handle GDPR consent
+    // GDPR consent handling (assuming this is separate from the cookie consent)
     const gdprThing = document.getElementById("gdpr-thing");
     const consentButton = document.getElementById("consent-button");
     
     // Check if GDPR consent was already accepted
-    if (localStorage.getItem('gdpr-accept') === 'ok') {
+    if (localStorage.getItem('gdpr-accept') !== 'ok') {
+        // Disable interaction with elements until GDPR is accepted
         if (gdprThing) {
-            gdprThing.style.display = 'none';
+            gdprThing.style.display = 'block'; // Display GDPR consent message
+        }
+        
+        // Disable form interaction if GDPR is not accepted
+        if (formIframe) {
+            formIframe.style.pointerEvents = 'none';
+        }
+        
+        // Handle GDPR consent button click
+        if (consentButton) {
+            consentButton.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default link behavior
+                gdprThing.style.display = 'none'; // Hide GDPR message
+                localStorage.setItem('gdpr-accept', 'ok'); // Save consent in localStorage
+                
+                // Enable form interaction after consent
+                if (formIframe) {
+                    formIframe.style.pointerEvents = 'auto';
+                }
+            });
+        } else {
+            // If no consent button (shouldn't be the case based on previous code), handle the scenario accordingly
+            console.error('Consent button not found.');
         }
     }
-    
-    // Handle GDPR consent button click
-    if (consentButton) {
-        consentButton.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent default link behavior
-            gdprThing.style.display = 'none';
-            localStorage.setItem('gdpr-accept', 'ok');
-        });
-    }
 });
+
 </script>
 
 </html>
