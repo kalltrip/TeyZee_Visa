@@ -7,13 +7,28 @@
 }
 
 body {
-    background-color: #e6f9e6;
-    /* background-color: #a28efc; */
+    background-color: #bab6ff;
+    /* background-color: #bfb9ff; */
     color: #000000;
     /* background-color: #a28efc; */
     line-height: 1.6;
 }
 
+.hero, .visa-eligibility, .visa-types, .process, .document-checklist {
+    position: relative;
+    margin-bottom: 40px; /* Add space for the separator */
+  }
+  
+  .hero::after, .visa-eligibility::after, .visa-types::after, .process::after, .document-checklist::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #cccccc;
+  }
+  
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -42,7 +57,6 @@ button {
 h1, h2, h3, h4 {
     color: #222;
 }
-
 /* Header Styles */
 /* Base header styles */
 header {
@@ -50,7 +64,7 @@ header {
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #f2fddd;
+    background-color: #9089f7;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
@@ -88,8 +102,8 @@ header {
     display: flex;
     align-items: center;
     gap: 5px;
-    background-color: #33cc59;
-    color: #122e12;
+    background-color: #5648ce;
+    color: #ffffff;
     border-radius: 8px;
     padding: 4px 16px;
   }
@@ -105,7 +119,7 @@ header {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding-bottom: 10px;
+      padding: 0;
       margin: 0;
     }
   
@@ -115,7 +129,7 @@ header {
     }
   
     .logo img {
-      height: 80px;
+      height: 70px;
     }
   
     .header-actions {
@@ -158,7 +172,7 @@ header {
 /* Hero Section */
 .hero {
     padding: 40px 0;
-    background-color: #e6f9e6;
+    /* background-color: #dce0fa; */
 }
 
 .hero .container {
@@ -169,7 +183,7 @@ header {
 }
 
 .action-banner {
-    background-color: #06c506e1;
+    background-color: #5648ce;
     color: #ffffff;
     padding: 5px 15px;
     border-radius: 14px;
@@ -264,7 +278,7 @@ header {
 }
 
 .signup-btn:hover {
-    background-color: #2855b3;
+    background-color:  #5648ce;;
 }
 
 .stats {
@@ -394,7 +408,8 @@ header {
 } */
 /* Navigation */
 .main-nav {
-    background-color: #fff;
+    /* background-color: #fff; */
+    /* background-color: #dce0fa; */
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
 }
@@ -437,7 +452,8 @@ header {
  /* Additional styling to enhance the visa cards */
  .visa-types {
     padding: 40px 0;
-    background-color: #e7fde7;
+    /* background-color: #e7fde7; */
+    /* background-color: #dce0fa; */
 }
 
 .visa-types h2 {
@@ -569,7 +585,7 @@ header {
 }
 
 .start-btn:hover {
-    background-color: #3367d6;
+    background-color:  #2e9225;
 }
 
 .visa-card.business .visa-type .heading {
@@ -591,7 +607,8 @@ header {
 }
 
 .callback-btn {
-    background-color: #34a853;
+    /* background-color: #34a853; */
+    background-color: #5648ce;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -611,7 +628,8 @@ header {
 
 /* Styling for the appointment section */
 .next-appointment {
-    background-color: white;
+    /* background-color: white; */
+    /* background-color: #dce0fa; */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -680,7 +698,8 @@ header {
   /* Process Timeline Styling */
   .process {
     padding: 50px 0;
-    background-color: #e8fff1;
+    /* background-color: #e8fff1; */
+    /* background-color: #ccd2f8; */
 }
 
 .process-timeline {
@@ -688,6 +707,7 @@ header {
     margin: 0 auto;
     padding: 30px;
     background-color: white;
+    /* background-color: #7480ec; */
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -707,7 +727,7 @@ header {
 
 .process-selector span {
     font-weight: 600;
-    color: #4285f4;
+    color:  #5648ce;;
 }
 
 .process-steps {
@@ -739,7 +759,7 @@ header {
     left: -40px;
     width: 30px;
     height: 30px;
-    background-color: #4285f4;
+    background-color:  #5648ce;;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -784,7 +804,7 @@ header {
 }
 
 .highlight {
-    color: #4285f4;
+    color:  #5648ce;;
     font-weight: 600;
 }
 
@@ -813,7 +833,7 @@ header {
 
 .badge.secure {
     background-color: #e8f0fe;
-    color: #4285f4;
+    color:  #5648ce;;
 }
 
 .badge.experts {
@@ -871,8 +891,9 @@ header {
 .document-checklist .container {
     max-width: 1000px;
     margin: 0 auto;
-    background: white;
+    /* background: white; */
     padding: 30px;
+    background-color: #9089f7;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -880,7 +901,7 @@ header {
 .document-checklist h2 {
     text-align: center;
     margin-bottom: 30px;
-    color: #333;
+    color: black;
     font-size: 24px;
 }
 
@@ -901,7 +922,7 @@ header {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #555;
+    color: #030303;
 }
 
 select {
@@ -921,7 +942,7 @@ select {
 
 select:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: #594ae2;
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
@@ -939,12 +960,12 @@ select:focus {
 
 .checklist-selector p {
     margin: 0;
-    color: #555;
+    color: #111111;
 }
 
 .checklist-selector span {
     font-weight: bold;
-    color: #333;
+    color: #111111;
 }
 
 .checklist-selector:hover {
@@ -957,13 +978,13 @@ select:focus {
 }
 
 .active-selector span {
-    color: #0066cc;
+    color: #1400cc;
 }
 
 .checklist-section {
     display: none;
     margin-top: 20px;
-    border: 1px solid #eee;
+    border: 1px solid #45198d;
     border-radius: 6px;
     padding: 20px;
 }
@@ -982,20 +1003,20 @@ select:focus {
 .checklist-column h4 {
     margin-bottom: 15px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #eee;
-    color: #333;
+    /* border-bottom: 2px solid #424242; */
+    color: #000000;
 }
 
 .checklist-item {
     display: flex;
     align-items: center;
     padding: 8px 0;
-    color: #555;
+    color: #000000;
 }
 
 .checklist-item i {
     margin-right: 10px;
-    color: #4a90e2;
+    color: #4c23e0;
     width: 20px;
     text-align: center;
 }
@@ -1099,7 +1120,7 @@ select:focus {
 }
 
 .apply-btn:hover {
-    background-color: #2855b3;
+    background-color:  #5648ce;;
 }
 
 /* Info Cards Section */
@@ -1308,7 +1329,7 @@ select:focus {
 }
 
 .confirm-btn:hover {
-    background-color: #3367d6;
+    background-color:  #5648ce;;
     transform: translateY(-2px);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
@@ -1348,7 +1369,8 @@ select:focus {
 }
 /* Visa Eligibility Section Styling */
 .visa-eligibility {
-    background-color: #e3fdeb;
+    /* background-color: #e3fdeb; */
+    background-color: #bab6ff;
     padding: 40px 0;
     text-align: center;
 }
@@ -1360,7 +1382,8 @@ select:focus {
 }
 
 .eligibility-content {
-    background-color: white;
+    /* background-color: white; */
+    background-color: #958afd;
     border-radius: 8px;
     padding: 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -1376,13 +1399,13 @@ select:focus {
 }
 
 .eligibility-content p {
-    color: #555;
+    color: #faf0f0;
     font-size: 1.1rem;
     margin-bottom: 25px;
 }
 
 .check-btn {
-    background-color: #FF5722;
+    background-color: #19ac51cc;
     color: white;
     border: none;
     padding: 12px 32px;
@@ -1395,7 +1418,7 @@ select:focus {
 }
 
 .check-btn:hover {
-    background-color: #E64A19;
+    background-color: #14974f;
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
@@ -1473,7 +1496,8 @@ select:focus {
 /* Footer */
 /* Footer Styling */
 footer {
-    background-color: #2a6947;
+    /* background-color: #2a6947; */
+    background-color: #9089f7;
     color: #ddd;
     padding: 50px 0 20px;
     border-top: 1px solid #e0e0e0;
@@ -1529,7 +1553,7 @@ footer {
     bottom: 0;
     width: 30px;
     height: 2px;
-    background-color: #4285f4;
+    background-color:  #5648ce;;
 }
 
 .link-group ul {
@@ -1553,7 +1577,7 @@ footer {
 }
 
 .link-group ul li a:hover {
-    color: #4285f4;
+    color:  #5648ce;;
 }
 
 .link-group ul li a i {

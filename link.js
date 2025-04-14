@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     const checkBtn = document.querySelector('.check-btn');
     const startBtn = document.querySelector('.start-btn');
