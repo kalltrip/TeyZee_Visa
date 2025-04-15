@@ -41,23 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial setup: Hide cards and show only the first 3
     updateCards();
 });
-// document.addEventListener("DOMContentLoaded", function() {
-//     document.querySelectorAll(".dropdown-toggle").forEach(toggle => {
-//         toggle.addEventListener("click", function() {
-//             let content = this.nextElementSibling;
 
-//             // Toggle active class
-//             this.classList.toggle("active");
-
-//             // Smooth dropdown effect
-//             if (content.style.maxHeight) {
-//                 content.style.maxHeight = null;
-//             } else {
-//                 content.style.maxHeight = content.scrollHeight + "px";
-//             }
-//         });
-//     });
-// });
 
 document.addEventListener("DOMContentLoaded", function () {
     // Define the cascading dropdown options
@@ -203,6 +187,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const initEvent = new Event("change");
     primaryDropdown.dispatchEvent(initEvent);
 });
+const tooltip = document.getElementById('custom-tooltip');
+const primaryDropdown = document.getElementById('primary-category');
+const subCategoryDropdown = document.getElementById('sub-category');
+
+function attachTooltip(dropdown, message) {
+    function showTooltip(e) {
+        tooltip.innerText = message;
+        tooltip.style.display = 'block';
+        positionTooltip(e);
+    }
+
+    function hideTooltip() {
+        tooltip.style.display = 'none';
+    }
+
+    function positionTooltip(e) {
+        const x = e.pageX || e.touches?.[0].pageX;
+        const y = e.pageY || e.touches?.[0].pageY;
+        tooltip.style.left = (x + 10) + 'px';
+        tooltip.style.top = (y - 50) + 'px';
+    }
+
+    // Desktop events
+    dropdown.addEventListener('mouseover', showTooltip);
+    dropdown.addEventListener('mousemove', positionTooltip);
+    dropdown.addEventListener('mouseleave', hideTooltip);
+
+    // Mobile events
+    dropdown.addEventListener('touchstart', showTooltip);
+    dropdown.addEventListener('touchmove', positionTooltip);
+    dropdown.addEventListener('touchend', hideTooltip);
+}
+
+attachTooltip(primaryDropdown, 'Please Select Your Visa Type');
+attachTooltip(subCategoryDropdown, 'Please Select Your Visa Type');
+
+
 const dateEl = document.getElementById('next-appointment-date');
 const today = new Date();
 
@@ -214,21 +235,21 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' };
 dateEl.textContent = nextMonth.toLocaleDateString('en-US', options);
 
 // read more
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize all hidden content to be hidden
     document.querySelectorAll('.hidden-content').forEach(content => {
         content.style.display = 'none';
     });
-    
+
     // Add click handlers to all read-more elements
     document.querySelectorAll('.read-more').forEach(readMoreLink => {
-        readMoreLink.addEventListener('click', function(e) {
+        readMoreLink.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             // Find the parent card content and the hidden content inside it
             const cardContent = this.closest('.card-content');
             const hiddenContent = cardContent.querySelector('.hidden-content');
-            
+
             // Toggle visibility
             if (hiddenContent.style.display === 'inline') {
                 hiddenContent.style.display = 'none';
@@ -242,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Make the entire link (both text and icon) clickable
     document.querySelectorAll('.read-more i').forEach(icon => {
-        icon.addEventListener('click', function(e) {
+        icon.addEventListener('click', function (e) {
             // Prevent the default action
             e.preventDefault();
             // Prevent event bubbling
