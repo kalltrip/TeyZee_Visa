@@ -230,25 +230,26 @@
         }
 
         #gdpr-thing a {
-            color: #ffffff;
+            color: #3925ee;
             text-decoration: underline;
         }
 
         #consent-button {
             display: inline-block;
-            background-color: #5648ce;
+            /* background-color: #5648ce; */
             color: #ffffff;
             text-decoration: none;
+            cursor: pointer;
             border-radius: 8px;
             padding: 5px 15px;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(86, 72, 206, 0.3);
+            /* box-shadow: 0 2px 8px rgba(86, 72, 206, 0.3); */
             margin-left: 5px;
         }
 
         #consent-button:hover {
-            background-color: #473dab;
+            /* background-color: #473dab; */
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(86, 72, 206, 0.4);
         }
@@ -316,6 +317,12 @@
 
         .footer-col ul li a:hover {
             color: #e4f0c2;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         .footer-countries h3 {
@@ -488,8 +495,8 @@
 
     <!-- GDPR consent banner -->
     <div id="gdpr-thing">
-        We use cookies for a better experience. See <a href="/html/privacy.html">this page</a> [ <a id="consent-button"
-            href="#">Ok</a> ]
+        We use cookies for a better experience. See <a href="/html/privacy.html">Privacy page</a> <span
+            id="consent-button" href="#">[ Ok ]</span>
     </div>
 
     <main>
@@ -533,7 +540,7 @@
                         with us</a>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-col flex1">
                     <h3>About us</h3>
                     <ul>
                         <li><a href="#">Contact us</a></li>
@@ -542,7 +549,7 @@
                     </ul>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-col flex1">
                     <h3>Refund & cancellation policy</h3>
                     <ul>
                         <li><a href="#">Pricing</a></li>
