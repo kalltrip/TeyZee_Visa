@@ -90,13 +90,234 @@
             </div>
         </div>
     </section>
-
     <section class="visa-eligibility">
         <div class="container eligibility-container">
             <div class="eligibility-content">
                 <h2>Check your Visa Eligibility for Rs 500 only</h2>
                 <p>Upload your basic documents now.</p>
                 <button class="check-btn">CHECK NOW</button>
+            </div>
+        </div>
+    </section>
+    <section class="document-checklist">
+        <div class="container">
+            <h2>Save time and hassle with our document checklist</h2>
+
+            <!-- Cascading dropdown -->
+            <div class="dropdown-container">
+                <div class="dropdown-group">
+                    <label class="dropdown-label" for="primary-category">Select Visa Category:</label>
+                    <select id="primary-category">
+                        <option value="">-- Select Category --</option>
+                        <option value="Business">Business</option>
+                        <option value="Tourist">Tourist</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Sub-category dropdown (initially hidden) -->
+                <div class="dropdown-group" id="subcategory-container" style="display: none;">
+                    <label class="dropdown-label" for="sub-category">Select Service/Business/Others:</label>
+                    <select id="sub-category">
+                        <option value="">-- Select Sub-Category --</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="document-checklist">
+                <!-- Tourist Category Selectors -->
+                <div class="checklist-selector" data-category="Tourist" data-subcategory="Employed">
+                    <p>Showing documents for <span>Tourist - Employed <i class="fas fa-chevron-down"></i></span></p>
+                </div>
+                <div class="checklist-selector" data-category="Tourist" data-subcategory="Self-Employed">
+                    <p>Showing documents for <span>Tourist - Self-Employed <i class="fas fa-chevron-down"></i></span>
+                    </p>
+                </div>
+                <div class="checklist-selector" data-category="Tourist" data-subcategory="Sponsored">
+                    <p>Showing documents for <span>Tourist - Sponsored <i class="fas fa-chevron-down"></i></span></p>
+                </div>
+
+                <!-- Business Category Selectors -->
+                <div class="checklist-selector" data-category="Business" data-subcategory="Meeting">
+                    <p>Showing documents for <span>Business - Meeting <i class="fas fa-chevron-down"></i></span></p>
+                </div>
+                <div class="checklist-selector" data-category="Business" data-subcategory="Conference">
+                    <p>Showing documents for <span>Business - Conference <i class="fas fa-chevron-down"></i></span></p>
+                </div>
+
+                <!-- Other Category Selectors -->
+                <div class="checklist-selector" data-category="Other" data-subcategory="Student">
+                    <p>Showing documents for <span>Student <i class="fas fa-chevron-down"></i></span></p>
+                </div>
+                <div class="checklist-selector" data-category="Other" data-subcategory="Work">
+                    <p>Showing documents for <span>Work <i class="fas fa-chevron-down"></i></span></p>
+                </div>
+                <div class="checklist-selector" data-category="Other" data-subcategory="Seaman">
+                    <p>Showing documents for <span>Seaman <i class="fas fa-chevron-down"></i></span></p>
+                </div>
+
+                <!-- Document sections -->
+                <!-- Tourist - Employed -->
+                <div id="checklist-section1" class="checklist-section table-layout">
+                    <div class="checklist-column">
+                        <h4>Tourist - Employed</h4>
+                        <div class="checklist-column">
+                            <h4>Additional Documents</h4>
+                            <div class="checklist-item"><i class="fas fa-file-invoice"></i><span>ITR Acknowledgement - 3
+                                    years</span></div>
+                            <div class="checklist-item"><i class="fas fa-file-alt"></i><span>Covering Letter</span>
+                            </div>
+                            <div class="checklist-item"><i class="fas fa-passport"></i><span>Previous Visas Copy</span>
+                            </div>
+                            <div class="checklist-item"><i class="fas fa-coins"></i><span>Assets & Liabilities
+                                    Statement</span></div>
+                        </div>
+                        <div class="checklist-column">
+                            <h4>Refundable Booking Documents</h4>
+                            <div class="checklist-item"><i class="fas fa-bed"></i><span>Hotel Voucher (Refundable
+                                    booking)</span></div>
+                            <div class="checklist-item"><i class="fas fa-plane"></i><span>Flight Tickets (Refundable
+                                    booking)</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tourist - Self-Employed -->
+                <div id="checklist-section2" class="checklist-section table-layout">
+                    <div class="checklist-column">
+                        <h4>Tourist - Self-Employed</h4>
+                        <div class="checklist-column">
+                            <h4>Additional Documents</h4>
+                            <div class="checklist-item"><i class="fas fa-file-invoice"></i><span>
+                                    ITR Acknowledgement ( Personal & Business) </span></div>
+                            <div class="checklist-item"><i class="fas fa-file-certificate"></i>
+                                <span>
+                                    Business Registration & Bank Statement & Other Documents
+                                </span>
+                            </div>
+                            <div class="checklist-item"><i class="fas fa-passport"></i><span>Previous Visas Copy</span>
+                            </div>
+                        </div>
+                        <div class="checklist-column">
+                            <h4>Refundable Booking Documents</h4>
+                            <div class="checklist-item"><i class="fas fa-bed"></i><span>Hotel Voucher (Refundable
+                                    booking)</span></div>
+                            <div class="checklist-item"><i class="fas fa-plane"></i><span>Flight Tickets (Refundable
+                                    booking)</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tourist - Spounser -->
+                <div id="checklist-section3" class="checklist-section table-layout">
+                    <div class="checklist-column">
+                        <h4>Tourist - Sponsored</h4>
+                        <div class="checklist-column">
+                            <h4>Additional Documents</h4>
+                            <div class="checklist-item">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>ITR Acknowledgement ( If available)</span>
+                            </div>
+                            <div class="checklist-item">
+                                <i class="fas fa-file-certificate">
+
+                                </i><span>Sponsor Letter & Proof Of Funds of Sponsorn</span>
+                            </div>
+                            <div class="checklist-item"><i class="fas fa-passport"></i><span>Previous Visas Copy</span>
+                            </div>
+
+                        </div>
+                        <div class="checklist-column">
+                            <h4>Refundable Booking Documents</h4>
+                            <div class="checklist-item"><i class="fas fa-bed"></i><span>Hotel Voucher (Refundable
+                                    booking)</span></div>
+                            <div class="checklist-item"><i class="fas fa-plane"></i><span>Flight Tickets (Refundable
+                                    booking)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more checklist sections for other categories and subcategories -->
+                <!-- Business - Meeting -->
+                <div id="checklist-section4" class="checklist-section table-layout">
+                    <div class="checklist-column">
+                        <h4>Business - Meeting</h4>
+                        <div class="checklist-column">
+                            <h4>Additional Documents</h4>
+                            <div class="checklist-item">
+                                <i class="fas fa-building"></i>
+                                <span>Company Invitation Letter</span>
+                            </div>
+                            <div class="checklist-item">
+                                <i class="fas fa-file-signature"></i>
+                                <span>Invitation from Overseas Business Partner ++</span>
+                            </div>
+                            <div class="checklist-item">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Meeting Schedule & Itinerary</span>
+                            </div>
+                        </div>
+                        <div class="checklist-column">
+                            <h4>Refundable Booking Documents</h4>
+                            <div class="checklist-item"><i class="fas fa-bed"></i><span>Hotel Voucher (Refundable
+                                    booking)</span></div>
+                            <div class="checklist-item"><i class="fas fa-plane"></i><span>Flight Tickets (Refundable
+                                    booking)</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="checklist-section5" class="checklist-section table-layout">
+                    <div class="checklist-column">
+                        <h4>Business - Conference</h4>
+                        <div class="checklist-column">
+                            <h4>Additional Documents</h4>
+                            <div class="checklist-item">
+                                <i class="fas fa-building"></i>
+                                <span>Company Invitation Letter</span>
+                            </div>
+                            <div class="checklist-item">
+                                <i class="fas fa-file-signature"></i>
+                                <span>Conference Booking Letter/Ticket</span>
+                            </div>
+                            <div class="checklist-item">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Meeting Schedule</span>
+                            </div>
+                        </div>
+                        <div class="checklist-column">
+                            <h4>Refundable Booking Documents</h4>
+                            <div class="checklist-item"><i class="fas fa-bed"></i><span>Hotel Voucher (Refundable
+                                    booking)</span></div>
+                            <div class="checklist-item"><i class="fas fa-plane"></i><span>Flight Tickets (Refundable
+                                    booking)</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Student -->
+                <div id="checklist-section6" class="checklist-section table-layout">
+                    <div class="checklist-column">
+                        <h4>Student</h4>
+                        <div class="checklist-column">
+                            <h4>Additional Documents</h4>
+                            <div class="checklist-item"><i class="fas fa-university"></i><span>Admission Letter</span>
+                            </div>
+                            <div class="checklist-item"><i class="fas fa-graduation-cap"></i><span>Academic
+                                    Transcripts</span></div>
+                            <div class="checklist-item"><i class="fas fa-file-invoice"></i><span>Financial Proof</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-column">
+                            <h4>Refundable Booking Documents</h4>
+                            <div class="checklist-item"><i class="fas fa-home"></i><span>Accommodation Proof</span>
+                            </div>
+                            <div class="checklist-item"><i class="fas fa-plane"></i><span>Flight Tickets (Refundable
+                                    booking)</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional sections would go here for the remaining categories -->
             </div>
         </div>
     </section>
@@ -815,6 +1036,18 @@
             </div>
         </div>
     </footer>
+<div id="custom-tooltip" style="
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: none;
+    pointer-events: none;
+    z-index: 1000;
+"></div>
+
     <script src="/link.js"></script>
     <script src="/scripts.js"></script>
     <script>
